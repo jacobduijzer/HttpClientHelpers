@@ -16,13 +16,7 @@ steps:
 - script: dotnet build $(solutionFile)
   displayName: 'dotnet build $(solutionFile)'
 
-- script: dotnet test $(solutionFile) \
-            --logger "trx;LogFileName=TestResults.trx"  \
-            --logger "trx;LogFileName=TestResults.xml" \
-            --results-directory "TestResults" \
-            /p:CollectCoverage=true \
-            /p:CoverletOutputFormat=cobertura \
-            /p:Exclude="[xunit.*]*" 
+- script: dotnet test $(solutionFile) --logger "trx;LogFileName=TestResults.trx" --logger "trx;LogFileName=TestResults.xml" --results-directory "TestResults" /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura /p:Exclude="[xunit.*]*"
   displayName: 'dotnet test $(solutionFile)'
 
 - script: |
