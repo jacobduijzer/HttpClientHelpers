@@ -13,11 +13,11 @@ variables:
   solutionFile: 'src/HttpClientHelpers.sln'
 
 steps:
-- script: dotnet build $(solutionFile
+- script: dotnet build $(solutionFile)
   displayName: 'dotnet build $(solutionFile)'
 
-- script: dotnet test $(solutionFile
-  displayName: 'dotnet test $(solutionFile'
+- script: dotnet test $(solutionFile)
+  displayName: 'dotnet test $(solutionFile)'
 
 - script: |
     echo Add other tasks to build, test, and deploy your project.
