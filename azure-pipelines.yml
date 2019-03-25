@@ -9,12 +9,15 @@ trigger:
 pool:
   vmImage: 'Ubuntu-16.04'
 
-steps:
-- script: dotnet build
-  displayName: 'dotnet build'
+variables:
+  solutionFile: 'src/HttpClientHelpers.sln'
 
-- script: dotnet test
-  displayName: 'dotnet test'
+steps:
+- script: dotnet build $(solutionFile
+  displayName: 'dotnet build $(solutionFile)'
+
+- script: dotnet test $(solutionFile
+  displayName: 'dotnet test $(solutionFile'
 
 - script: |
     echo Add other tasks to build, test, and deploy your project.
