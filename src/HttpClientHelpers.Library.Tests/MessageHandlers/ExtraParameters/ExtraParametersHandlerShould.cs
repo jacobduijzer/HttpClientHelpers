@@ -1,4 +1,5 @@
-﻿using HttpClientHelpers.Library.MessageHandlers.ExtraParameters;
+﻿using FluentAssertions;
+using HttpClientHelpers.Library.MessageHandlers.ExtraParameters;
 using System.Collections.Generic;
 using Xunit;
 
