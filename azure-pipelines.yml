@@ -10,8 +10,11 @@ pool:
   vmImage: 'Ubuntu-16.04'
 
 steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+- script: dotnet build
+  displayName: 'dotnet build'
+
+- script: dotnet test
+  displayName: 'dotnet test'
 
 - script: |
     echo Add other tasks to build, test, and deploy your project.
