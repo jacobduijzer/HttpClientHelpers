@@ -19,6 +19,18 @@ steps:
 - script: dotnet test $(solutionFile) --logger "trx;LogFileName=TestResults.trx" --logger "trx;LogFileName=TestResults.xml" --results-directory "TestResults" /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura /p:Exclude="[xunit.*]*"
   displayName: 'dotnet test $(solutionFile)'
 
+- task: PublishTestResults@2
+  inputs:
+    testResultsFormat: 'xUnit' # Options: JUnit, NUnit, VSTest, xUnit, cTest
+    testResultsFiles: '**/TestResults.xml' 
+    #searchFolder: '$(System.DefaultWorkingDirectory)' # Optional
+    #mergeTestResults: false # Optional
+    #failTaskOnFailedTests: false # Optional
+    #testRunTitle: # Optional
+    #buildPlatform: # Optional
+    #buildConfiguration: # Optional
+    #publishRunAttachments: true # Optional
+
 - script: |
     echo Add other tasks to build, test, and deploy your project.
     echo See https://aka.ms/yaml
