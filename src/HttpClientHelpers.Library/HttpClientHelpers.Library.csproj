@@ -2,5 +2,14 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <Authors>Jacob Duijzer</Authors>
+    <Product>HttpClientHelpers</Product>
+    <PackageVersion>0.0.1</PackageVersion>
+    <PackageId>JacobsApps.HttpClientHelpers</PackageId>
+    <Description>Divers message handlers for using with the HttpClient. Logging and authentication handlers and such.</Description>
+    <PackageProjectUrl>https://github.com/jacobduijzer/HttpClientHelpers</PackageProjectUrl>
+    <PackageTags>HttpClient HttpClientHandlers ClientHandlers</PackageTags>
+    <RepositoryUrl>https://github.com/jacobduijzer/HttpClientHelpers</RepositoryUrl>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 </Project>

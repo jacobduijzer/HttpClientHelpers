@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 namespace HttpClientHelpers.Library.MessageHandlers.ExtraParameters
 {
     public class ExtraParametersHandler
-        : HttpClientHandler
+        : DelegatingHandler
     {
         private readonly Dictionary<string, string> _additionalParameters;
 

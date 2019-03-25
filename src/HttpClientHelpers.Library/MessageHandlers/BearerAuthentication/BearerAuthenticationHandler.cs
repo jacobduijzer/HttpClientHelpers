@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace HttpClientHelpers.Library.MessageHandlers.BearerAuthentication
 {
     public class BearerAuthenticationHandler
-        : HttpClientHandler
+        : DelegatingHandler
     {
         private readonly Func<Task<string>> _getToken;
 

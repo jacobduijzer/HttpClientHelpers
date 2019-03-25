@@ -39,23 +39,26 @@ namespace HttpClientHelpers.Library.MessageHandlers.Logging
 
         protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
-            _logger.Log("Request:");
-            _logger.Log(request.ToString());
             if (_logLevel == LogLevel.Debug && request.Content != null)
             {
-                _logger.Log(await request.Content.ReadAsStringAsync());
+                _logger.Log("Request:");
+                _logger.Log(request.ToString());
+
+                if (request.Content != null)
+                    _logger.Log(await request.Content.ReadAsStringAsync());
+                _logger.Log(Environment.NewLine);
             }
-            _logger.Log(Environment.NewLine);
 
             HttpResponseMessage response = await base.SendAsync(request, cancellationToken);
 
-            _logger.Log("Response:");
-            _logger.Log(response.ToString());
-            if (_logLevel == LogLevel.Debug && response.Content != null)
+            if (_logLevel == LogLevel.Debug)
             {
-                _logger.Log(await response.Content.ReadAsStringAsync());
+                _logger.Log("Response:");
+                _logger.Log(response.ToString());
+                if (response.Content != null)
+                    _logger.Log(await response.Content.ReadAsStringAsync());
+                _logger.Log(Environment.NewLine);
             }
-            _logger.Log(Environment.NewLine);
 
             return response;
         }
