@@ -11,6 +11,8 @@ namespace HttpClientHelpersLibrary.IntegrationTests.MessageHandlers.Logging
 {
     public class LoggingHandlerShould : IClassFixture<CustomTestFixture>
     {
+        private const string BASE_TEST_URL = "https://jsonplaceholder.typicode.com";
+
         private readonly CustomTestFixture _fixture;
         private readonly Mock<ILogger> _mockLogger;
 
@@ -33,9 +35,7 @@ namespace HttpClientHelpersLibrary.IntegrationTests.MessageHandlers.Logging
         {
             _mockLogger.Reset();
 
-            var httpClient = new HttpClient(new LoggingHandler(new HttpClientHandler(), _mockLogger.Object, LogLevel.None));
-            httpClient.BaseAddress = new Uri("https://jsonplaceholder.typicode.com");
-            var testApi = RestService.For<ITestApi>(httpClient);
+            var testApi = CreateTestClient(LogLevel.None);
 
             var items = await testApi.GetToDoListAsync().ConfigureAwait(false);
 
@@ -43,17 +43,34 @@ namespace HttpClientHelpersLibrary.IntegrationTests.MessageHandlers.Logging
         }
 
         [Fact]
-        public async Task UseLogger()
+        public async Task UseLoggerWhenLogLevelIsDebug()
         {
             _mockLogger.Reset();
 
-            var httpClient = new HttpClient(new LoggingHandler(new HttpClientHandler(), _mockLogger.Object, LogLevel.Debug));
-            httpClient.BaseAddress = new Uri("https://jsonplaceholder.typicode.com");
-            var testApi = RestService.For<ITestApi>(httpClient);
+            var testApi = CreateTestClient(LogLevel.Debug);
 
             var items = await testApi.GetToDoListAsync().ConfigureAwait(false);
 
             _mockLogger.Verify(x => x.Log(It.IsAny<string>()), Times.AtLeastOnce);
+        }
+
+        [Fact]
+        public async Task UseLoggerWhenLogLevelIsInformation()
+        {
+            _mockLogger.Reset();
+
+            var testApi = CreateTestClient(LogLevel.Information);
+
+            var items = await testApi.GetToDoListAsync().ConfigureAwait(false);
+
+            _mockLogger.Verify(x => x.Log(It.IsAny<string>()), Times.AtLeastOnce);
+        }
+
+        private ITestApi CreateTestClient(LogLevel logLevel)
+        {
+            var httpClient = new HttpClient(new LoggingHandler(new HttpClientHandler(), _mockLogger.Object, logLevel));
+            httpClient.BaseAddress = new Uri(BASE_TEST_URL);
+            return RestService.For<ITestApi>(httpClient);
         }
     }
 }
