@@ -10,9 +10,10 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{AB182D50-9605-45D6-B4F4-98B261162442}"
 	ProjectSection(SolutionItems) = preProject
 		..\azure-pipelines.yml = ..\azure-pipelines.yml
+		..\README.md = ..\README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HttpClientHelpersLibrary.IntegrationTests", "HttpClientHelpersLibrary.IntegrationTests\HttpClientHelpersLibrary.IntegrationTests.csproj", "{7A160B8A-2258-429A-815A-392D3E9F8D51}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HttpClientHelpersLibrary.IntegrationTests", "HttpClientHelpersLibrary.IntegrationTests\HttpClientHelpersLibrary.IntegrationTests.csproj", "{7A160B8A-2258-429A-815A-392D3E9F8D51}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

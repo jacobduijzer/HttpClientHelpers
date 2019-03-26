@@ -8,5 +8,8 @@ namespace HttpClientHelpersLibrary.IntegrationTests
     {
         [Get("/todos")]
         Task<List<ToDoItem>> GetToDoListAsync();
+
+        [Get("/posts")]
+        Task<List<Post>> GetPostsAsync();
     }
 }

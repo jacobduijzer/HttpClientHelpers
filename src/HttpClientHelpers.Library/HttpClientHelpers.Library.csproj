@@ -12,4 +12,8 @@
     <RepositoryUrl>https://github.com/jacobduijzer/HttpClientHelpers</RepositoryUrl>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Ardalis.GuardClauses" Version="1.2.8" />
+  </ItemGroup>
 </Project>
